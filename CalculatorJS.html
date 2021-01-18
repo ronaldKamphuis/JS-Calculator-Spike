@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function insert(num) {
+            document.form.textview.value = document.form.textview.value + num;
+        }
+
+        function equal() {
+            var exp = document.form.textview.value;
+            if (exp) {
+                document.form.textview.value = eval(exp)
+            }
+        }
+
+        function clean() {
+            document.form.textview.value = " ";
+        }
+
+        function backspace() {
+            var exp = document.form.textview.value;
+            document.form.textview.value = exp.substring(0, exp.length - 1);
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .product {
+            text-align: left;
+            padding-left: 20px;
+            width: 100%;
+            height: 100px;
+            font-size: 50px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-image: linear-gradient(#75b3de 0%, #aed3f5 100%);
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+            overflow: hidden;
+            transition: 1.5s;
+        }
+        .product:active {
+            background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+            border-bottom: none;
+        }
+        .product:hover {
+            background-image: linear-gradient(#b4e7af 0%, #91bf85 70%);
+        }
+        .product.special:hover{
+            -webkit-transform: rotateY(360deg);
+            -ms-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-image: linear-gradient(#f3f3f3 0%, #d0d0d0 100%);
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+        }
+        .button:active {
+            background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+            border-bottom: none;
+        }
+        .button:hover {
+            background-image: linear-gradient(#b5b5b5 0%, #606060 70%);
+        }
+        .textview {
+            background-color: azure;
+            width: 432px;
+            margin: 10px;
+            font-size: 50px;
+            padding: 10px;
+        }
+        .column {
+            float: left;
+            padding: 100px;
+        }
+        .left {
+            width: 60%;
+        }
+        .right {
+            width: 40%;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /*Deze code voor uitlijning van alleen de rekenmachine*/
+        /*.main {*/
+        /*    position: absolute;*/
+        /*    top: 30%;*/
+        /*    left: 40%;*/
+        /*    transform: translateX(-50%) translateY(-50%);*/
+        /*}*/
+    </style>
+
+    <meta charset="UTF-8">
+    <title>HTML Calculator</title>
+</head>
+
+<!--<div class="main">-->
+    <div class="row">
+        <div class="column left">
+            <input class="product" type="button" value="BIER!   &euro;2,50" onclick="insert(2.50)">
+            <input class="product" type="button" value="Wijn   &euro;2,50" onclick="insert(2.50)">
+            <input class="product" type="button" value="Frisdrank   &euro;2,00" onclick="insert(2.00)">
+            <input class="product" type="button" value="Patat   &euro;3,00" onclick="insert(3.00)">
+            <input class="product" type="button" value="Broodje Hamburger   &euro;4,00" onclick="insert(4.00)">
+            <input class="product special" type="button" value="PubQuiz :-)   &euro;8,00" onclick="insert(8.00)">
+        </div>
+        <div class="column right">
+            <form name="form">
+                <input class="textview" name="textview">
+            </form>
+            <table>
+                <tr>
+                    <td><input class="button" type="button" value="C" onclick="clean()"></td>
+                    <td><input class="button" type="button" value="<" onclick="backspace()"></td>
+                    <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                    <td><input class="button" type="button" value="X" onclick="insert('*')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                    <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                    <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                    <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                    <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                    <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                    <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                    <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                    <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                    <td><input class="button" type="button" value="=" onclick="equal()"></td>
+                </tr>
+                <tr>
+                    <td><!-- <input class="button" type="button" value=""> --></td>
+                    <td><input class="button" type="button" value="0" onclick="insert(0)"></td>
+                    <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+                    <td><!--  <input class="button" type="button" value=""> --></td>
+                </tr>
+            </table>
+        </div>
+<!--    </div>-->
+</div>
+</body>
+</html>
